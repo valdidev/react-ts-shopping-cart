@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
 
-import Item from './ItemComponent/Item';
+import Item from "./ItemComponent/Item";
+import Cart from "./CartComponent/Cart";
 
 import Drawer from "@material-ui/core/Drawer";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -35,7 +36,7 @@ const App = () => {
 
   console.log(data);
 
-  const getTotalItems = (items: CartItemType[]) => 
+  const getTotalItems = (items: CartItemType[]) =>
     items.reduce((acc: number, item) => acc + item.amount, 0);
 
   const handleAddToCart = (clickItem: CartItemType) => null;
@@ -43,22 +44,26 @@ const App = () => {
   const handleRemoveFromCart = () => null;
 
   if (isLoading) return <LinearProgress />;
-  if (error) return <div>Something went wrong...</div>
+  if (error) return <div>Something went wrong...</div>;
 
   return (
     <Wrapper>
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-        Cart goes here
+        <Cart
+          cartItems={cartItems}
+          addToCart={handleAddToCart}
+          removeFromCart={handleRemoveFromCart}
+        />
       </Drawer>
       <StyledButton onClick={() => setCartOpen(true)}>
-        <Badge badgeContent={getTotalItems(cartItems)} color='error'>
+        <Badge badgeContent={getTotalItems(cartItems)} color="error">
           <AddShoppingCartIcon />
         </Badge>
       </StyledButton>
       <Grid container spacing={3}>
-        {data?.map(item => (
+        {data?.map((item) => (
           <Grid item key={item.id} xs={12} sm={4}>
-            <Item item={item} handleAddToCart={handleAddToCart}/>
+            <Item item={item} handleAddToCart={handleAddToCart} />
           </Grid>
         ))}
       </Grid>
