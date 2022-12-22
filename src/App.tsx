@@ -61,7 +61,9 @@ const App = () => {
     setCartItems((prev) =>
       prev.reduce((acc, item) => {
         if (item.id === id) {
+          // skip fn if the accumulator when is 1
           if (item.amount === 1) return acc;
+          // otherwise remove 1 item from amount
           return [...acc, { ...item, amount: item.amount - 1 }];
         } else {
           return [...acc, item];
