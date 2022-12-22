@@ -28,6 +28,18 @@ const App = () => {
     "products",
     getProducts
   );
+
+  console.log(data);
+
+  const getTotalItems = () => null;
+
+  const hadleAddToCart = () => null;
+
+  const handleRemoveFromCart = () => null;
+
+  if (isLoading) return <LinearProgress />;
+  if (error) return <div>Something went wrong...</div>
+
   return <div>App</div>;
 };
 
