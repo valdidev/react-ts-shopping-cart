@@ -7,6 +7,8 @@ import Grid from '@material-ui/core/Grid';
 import AddShoppingCart from '@material-ui/icons/AddShoppingCart';
 import Badge from '@material-ui/core/Badge';
 
+import { Wrapper } from './App.styles';
+
 
 const App = () => {
   return (
