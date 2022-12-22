@@ -33,7 +33,7 @@ const App = () => {
 
   const getTotalItems = () => null;
 
-  const hadleAddToCart = () => null;
+  const hadleAddToCart = (clickItem: CartItemType) => null;
 
   const handleRemoveFromCart = () => null;
 
